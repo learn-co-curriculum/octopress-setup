@@ -22,6 +22,10 @@ Which will install all the gems you need for octopress.
 
 Then `rake install` which will setup octopress.
 
+**NOTE ABOUT `rake install`**
+
+If you get an error about bundler having already activated a version of rake and using a different of version of rake, simply preface the command you tried running, namely, `rake install` with `bundle exec rake install`.
+
 ## Hosting Octopress on Github
 
 So there are two concerns we want to deal with next, having a repository to store our blog posts in so that they are under version control and backed up and having a place to host our blog. Fortunately, github will deal with both of those concerns.
