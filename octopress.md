@@ -5,10 +5,10 @@ We're setting up octopress to power our student code blogs and also as a test of
 Go into your code directory and:
 
 ```
-git clone git://github.com/imathis/octopress.git flatiron-student-002.github.io
+git clone git://github.com/imathis/octopress.git flatiron-student-003.github.io
 ```
 
-This will clone the octopress source into a directory that is named based on your githubusername and then the github.io address. So for example, flatiron-student-002.github.io.
+This will clone the octopress source into a directory that is named based on your githubusername and then the github.io address. So for example, flatiron-student-003.github.io.
 
 ## Installing Octopress
 
@@ -28,12 +28,12 @@ So there are two concerns we want to deal with next, having a repository to stor
 
 ### A Little on Github Pages
 
-[Github Pages](http://pages.github.com/) is a service that will allow you to use github to host static HTML websites. It works in a sort of weird way. User Pages live in a special repository dedicated to only the Pages files. This repository uses the account name, for example flatiron-student-002/flatiron-student-002.github.io where `flatiron-student-002` is the github user name.
+[Github Pages](http://pages.github.com/) is a service that will allow you to use github to host static HTML websites. It works in a sort of weird way. User Pages live in a special repository dedicated to only the Pages files. This repository uses the account name, for example flatiron-student-003/flatiron-student-003.github.io where `flatiron-student-003` is the github user name.
 
 - This repository must use the username/username.github.io naming scheme.
 - Content from the `master` branch will be used to build and publish the Pages. Because of this, the master branch cannot contain the source code for our blog, but rather `master` ** can only contain statically generated HTML.**
 
-So we need to create a [new Github repository](https://github.com/repositories/new) and name the repository with your user name `username.github.com` (in this example `flatiron-student-002.github.io`.
+So we need to create a [new Github repository](https://github.com/repositories/new) and name the repository with your user name `username.github.com` (in this example `flatiron-student-003.github.io`.
 
 Github Pages for users uses the master branch like the public directory on a web server, serving up the files at your Pages url `http://username.github.com`.
 
