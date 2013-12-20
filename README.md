@@ -1,3 +1,8 @@
+---
+  tags: git, github pages, octopress, jekyll, deploy, blog
+  languages: ruby
+---
+
 We're setting up octopress to power our student code blogs and also as a test of our environment. So even if you don't plan on blogging on octopress cause you already got a tumblr or wordpress you use, you must setup octopress.
 
 ## Cloning Octopress
