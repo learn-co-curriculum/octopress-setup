@@ -1,5 +1,5 @@
 ---
-  tags: git, github pages, octopress, jekyll, deploy, blog
+  tags: git, github pages, octopress, jekyll, deploy, blog, tutorial
   languages: ruby
 ---
 
