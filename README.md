@@ -1,121 +1,160 @@
 ---
-  tags: git, github pages, octopress, jekyll, deploy, blog, tutorial
-  languages: ruby
+  tags: octopress, git, github, version control, rake tasks
+  languages: html, css, ruby, markdown
 ---
+# Make a Blog!
+## Specifically with Octopress!
 
-We're setting up octopress to power our student code blogs and also as a test of our environment. So even if you don't plan on blogging on octopress cause you already got a tumblr or wordpress you use, you must setup octopress.
+You're going to make yourself a blog.  It's an important part of being at Flatiron and being a programmer. If you want to be apart of the community you're going to be blogging.  A great place for an aspiring rubyist to start is with Octopress.  Octopress is built on Ruby, but has it's own DSL (Domain Specific Language), which means it uses ruby to create its own little language that it uses to perform its functions.  But don't worry about it because while using Octopress you won't be using its DSL too often.
 
-## Cloning Octopress
+The main reason we want you to use Octopress is because it will help you get a better understanding of git and Github, which aren't the same thing!
 
-Go into your code directory and:
+Octopress depends on git and after any change you make you going to want to commit those changes and push them up to Github, which will hold the repository for your Octopress Blog.  (Also, its easy commit cred for your Github profile.)
 
+Some other things we want you to learn about are:
+Rake tasks
+  - Rake tasks are an important part of Ruby and were developed by the late Jim Weirich.
+  - We run rake tasks little commands for a project that are written in Ruby, but are called through your command line.
+  - They allow us to automate or simplify tasks by predefining them in a Rakefile at the top level of a project's directory.
+  - They're used all over Rails, but you won't see much of them from now until then.
+
+Markdown
+  - Every project you do will have a README.md which is a markdown file type.
+  - It's a markup language similar to HTML that is converted by browsers into HTML.
+    - ex: one `#` is the equivalent of `<h1></h1>` in HTML.
+    - Here's a [cheat sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to help you out.
+  - If you use a rake task to generate a post it will be a markdown file.
+
+
+## Getting Started
+
+The first step is to open up a fresh tab in your command line and cd into a directory you want to keep your project in.
+
+Next run these commands (it might take a bit to install everything)
+```sh
+  git clone git://github.com/imathis/octopress.git octopress
+  cd octopress
+  bundle install
 ```
-git clone git://github.com/imathis/octopress.git flatiron-student-003.github.io
-```
+- This will 
+  - Clone the main octopress repository from Github to your computer
+  - cd you into that new repository
+  - Install all the necessary dependencies of Octopress on your computer so it can run
 
-This will clone the octopress source into a directory that is named based on your githubusername and then the github.io address. So for example, flatiron-student-003.github.io.
-
-## Installing Octopress
-
-From within the directory you just made, do:
-
-```
-bundle install
-```
-
-Which will install all the gems you need for octopress.
-
-Then `rake install` which will setup octopress.
+When that's done run `rake install`
+  - Your very first rake task will install the default Octopress theme, so it isn't just some bland html website from 1996.
 
 **NOTE ABOUT `rake install`**
 
 If you get an error about bundler having already activated a version of rake and using a different of version of rake, simply preface the command you tried running, namely, `rake install` with `bundle exec rake install`.
 
+Now that this is done let's add and commit the changes we made. Run the following.
+```sh
+  git add -A
+  git commit -m "Creates and sets up my basic octopress blog"
+```
+These commands will:
+  - add all of the changes you made to git's version tracker
+  - commits those changes to "clean" your working directory (untracked changes make your directory "dirty")
+    - commit messages are written in present tense as best practice (something about time machines, DeLoreans, and Doc Brown, but don't worry about using past tense instead)
+
+## Configuring Your `_config.yml` File
+
+Your `_config.yml` file lives in the top directory of your Octopress Blog.  This file is where a lot of important information about your blog.  We need to customize this file a little.
+
+Run `subl .` in your command line to open this project in sublime. Next open `_config.yml` in sublime. Inside you should see a big block of code that looks like this.
+```
+  title:              # Used in the header and title tags
+  subtitle:           # A description used in the header
+  author:             # Your name, for RSS, Copyright, Metadata
+  description:        # A default meta description for your site
+```
+Fill out each one of those with the title of your blog, some cute subtitle, your name, and a quick description about the blog.  Most of this is for Meta data in the head of your blog's pages; however, the title will be used often when your blog is compiled.
+
+When you're done save your changes then add and commit them like we did before, but use a commit message like "Sets up my config.yml!"
+
+
 ## Hosting Octopress on Github
+Finally, we're going to get ready to deploy this blog.
 
 So there are two concerns we want to deal with next, having a repository to store our blog posts in so that they are under version control and backed up and having a place to host our blog. Fortunately, github will deal with both of those concerns.
 
 ### A Little on Github Pages
 
-[Github Pages](http://pages.github.com/) is a service that will allow you to use github to host static HTML websites. It works in a sort of weird way. User Pages live in a special repository dedicated to only the Pages files. This repository uses the account name, for example flatiron-student-003/flatiron-student-003.github.io where `flatiron-student-003` is the github user name.
+[Github Pages](http://pages.github.com/) is a service that will allow you to use github to host static HTML websites. It works in a sort of weird way. User Pages live in a special repository dedicated to only the Pages files. This repository uses the account name to create a url address for the blog.  To do so create a [new repository](https://github.com/new) and call it `username.github.io` where username is your user name.  This will become the web address Github hosts your blog on.
 
 - This repository must use the username/username.github.io naming scheme.
 - Content from the `master` branch will be used to build and publish the Pages. Because of this, the master branch cannot contain the source code for our blog, but rather `master` ** can only contain statically generated HTML.**
 
-So we need to create a [new Github repository](https://github.com/repositories/new) and name the repository with your user name `username.github.com` (in this example `flatiron-student-003.github.io`.
-
-Github Pages for users uses the master branch like the public directory on a web server, serving up the files at your Pages url `http://username.github.com`.
-
-As a result, you'll want to work on the source for your blog in the `source` branch and commit *the generated content* to the `master` branch. Octopress has a configuration task that helps you set all this up. Make sure you are in your octopress directory.
-
-``` sh
-rake setup_github_pages
-```
-This will:
-
-1. Ask you for your Github Pages repository url.
-2. Rename the remote pointing to imathis/octopress from 'origin' to 'octopress'
-3. Add your Github Pages repository as the default origin remote.
-4. Switch the active branch from master to source.
-5. Configure your blog's url according to your repository.
-6. Setup a master branch in the _deploy directory for deployment.
-
-Next run:
-
+To make sure your blog deploys to Github run, `rake setup_github_pages` in your terminal. You should see something like this,
 ```sh
-rake generate
-rake deploy
+Enter the read/write url for your repository
+(For example, 'git@github.com:your_username/your_username.github.io.git)
+           or 'https://github.com/your_username/your_username.github.io')
+Repository url:
 ```
-
-This will generate your blog, copy the generated files into `_deploy/`, add them to git, commit and push them up to the master branch. In a few seconds you should get an email
-from Github telling you that your commit has been received and will be published on your site.
-
-**Don't forget** to commit the source for your blog.
-
+Go back to Github and find the line that says something like, (make sure to use ssh and _not_ https)
 ```sh
-git add .
-git commit -m 'your message'
-git push origin source
+git remote add origin git@github.com:username/username.github.io.git
 ```
+Copy and paste the entire part following origin, `git@github.com:username/username.github.io.git` into the `Repository url:` line in your command line, and press enter.
+  - This will
+    - change your `_config.yml` file's `url:` line to have the correct url
+    - allow you to finally push your blog up to github so that your changes will both be stored remotely and actually host your blog!
+    - also move you into a new git branch called source, this is the branch you want to do everything here on out in
 
-**Note:** With new repositories, Github sets the default branch based on the branch you push first, and it looks there for the generated site content.
-If you're having trouble getting Github to publish your site, go to the admin panel for your repository and make sure that the master branch is the default branch.
+### BUT... We should probably have a post first.
 
-## Starting Octopress Locally
+To make a new post run, `rake new_post["My First Post On Octopress"]`
+  - This will generate a new, timestamped, empty blog post in the `source/_posts/` folder in your octopress blog.
+  - The ```source/``` folder is where all of your content will go.
 
-From within your octopress directory, run
-
+Go into sublime and open that folder and you should see something like, 
 ```
-rake preview
+  ---
+  layout: post
+  title: "My First Post On Octopress"
+  date: 2014-04-28 13:03:17 -0400
+  comments: true
+  categories: 
+  ---
 ```
+Add "Flatiron&nbsp;School" to the categories.
+  - The `&nbsp;` is a non-breaking space; any normal space inside the quotation marks for categories will be split into categories.
+
+Below the last `---` add something like "Hello, World." Then save the changes you made to the post.
+
+### Starting Octopress Locally
+
+If you'd like to see how the post looks before you deploy enter from within your octopress directory, `rake preview`.
 
 That starts a local server that will allow you to preview your blog as you write. Open browser and go to [localhost:4000](http://localhost:4000). Pay attention to the output of rake preview, it should read and make it clear that the server started. You should see an empty octopress blog in your browser.
 
-## Write Your Hello World
-
-Read the [Octopress Bloggin Guide](http://octopress.org/docs/blogging/)
-
+###Now let's deploy! 
+All you need to do is enter these two commands,
+```sh
+  rake generate
+  rake deploy
 ```
-rake new_post["hello world"]
-```
+- This will
+  - copy and compile the files from your `source/` and `sass/` folders into the `_deploy/` directories.
+  - next it will add and commit those changes to git
+  - finally it will push those changes to the master branch, which will make the website live.
 
-Write a help world post and then deploy to github pages and you should be able to see your live site.
-
-*Note:* Always make sure you are working out of the `source` branch, never `master`. `master` is perishable.
-
-After you write your post in the `source` directory, do:
-
-```
-rake generate
-rake deploy
-```
-
-you should be able to go to username.github.io and see your posts.
-
-And finally, commit your blog via:
+Since we generated some files and deployed, now is a good time to add all the changes to git, commit them, then push them up to Github. But we'll need to make sure git has the right repository as it's origin.
 
 ```sh
-git add .
-git commit -m 'your message'
-git push origin source
+  git add -A
+  git commit -m "adds my first blog post and deployment"
+  git remote add origin git@github.com:username/username.github.io.git
+  git config branch.master.remote origin
+  git push -u origin master
 ```
+  - This will
+    - add all the changes and commit them
+    - add the ssh url of the repo you made to git so it sends your changes to the right place
+    - ensures your branch is set as the main branch
+    - push the project up to Github where it will live
+
+##BONUS
+  If you want to further customize your octopress blog check out this [post](http://tsiege.github.io/blog/2014/04/27/tips-on-setting-up-octopress/) I made to do just that.
