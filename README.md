@@ -5,6 +5,8 @@
 # Make a Blog!
 ## Specifically with Octopress!
 
+## Instructions
+
 You're going to make yourself a blog.  It's an important part of being at Flatiron and being a programmer. If you want to be apart of the community you're going to be blogging.  A great place for an aspiring rubyist to start is with Octopress.  Octopress is built on Ruby, but has it's own DSL (Domain Specific Language), which means it uses ruby to create its own little language that it uses to perform its functions.  But don't worry about it because while using Octopress you won't be using its DSL too often.
 
 The main reason we want you to use Octopress is because it will help you get a better understanding of git and Github, which aren't the same thing!
@@ -146,9 +148,7 @@ Since we generated some files and deployed, now is a good time to add all the ch
 ```sh
   git add -A
   git commit -m "adds my first blog post and deployment"
-  git remote add origin git@github.com:username/username.github.io.git
-  git config branch.master.remote origin
-  git push -u origin master
+  git push origin source
 ```
   - This will
     - add all the changes and commit them
