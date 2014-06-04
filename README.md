@@ -83,7 +83,7 @@ So there are two concerns we want to deal with next, having a repository to stor
 
 ### A Little on Github Pages
 
-[Github Pages](http://pages.github.com/) is a service that will allow you to use github to host static HTML websites. It works in a sort of weird way. User Pages live in a special repository dedicated to only the Pages files. This repository uses the account name to create a url address for the blog.  To do so create a [new repository](https://github.com/new) and call it `username.github.io` where username is your user name.  This will become the web address Github hosts your blog on.
+[Github Pages](http://pages.github.com/) is a service that will allow you to use github to host static HTML websites. It works in a sort of weird way. User Pages live in a special repository dedicated to only the Pages files. This repository uses the account name to create a url address for the blog.  To do so create a [new repository](https://github.com/new) and call it `username.github.io` where username is your user name, but ___DO NOT CREATE A README WITH THE REPO___. (It will prevent you from pushing to github and deploying the site.)  This will become the web address Github hosts your blog on.
 
 - This repository must use the username/username.github.io naming scheme.
 - Content from the `master` branch will be used to build and publish the Pages. Because of this, the master branch cannot contain the source code for our blog, but rather `master` ** can only contain statically generated HTML.**
