@@ -1,7 +1,4 @@
----
-  tags: octopress, git, github, version control, rake tasks
-  languages: html, css, ruby, markdown
----
+
 # Make a Blog!
 ## Specifically with Octopress!
 
