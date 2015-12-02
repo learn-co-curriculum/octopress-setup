@@ -8,7 +8,7 @@ You're going to make yourself a blog.  It's an important part of being at Flatir
 
 The main reason we want you to use Octopress is because it will help you get a better understanding of git and Github, which aren't the same thing!
 
-Octopress depends on git and after any change you make you going to want to commit those changes and push them up to Github, which will hold the repository for your Octopress Blog.  (Also, its easy commit cred for your Github profile.)
+Octopress depends on git and after any change you make you're going to want to commit those changes and push them up to Github, which will hold the repository for your Octopress Blog.  (Also, its easy commit cred for your Github profile.)
 
 Some other things we want you to learn about are:
 Rake tasks
@@ -155,5 +155,3 @@ Since we generated some files and deployed, now is a good time to add all the ch
 
 ##BONUS
   If you want to further customize your octopress blog check out this [post](http://tsiege.github.io/blog/2014/04/27/tips-on-setting-up-octopress/) I made to do just that.
-
-<a href='https://learn.co/lessons/octopress-setup' data-visibility='hidden'>View this lesson on Learn.co</a>
