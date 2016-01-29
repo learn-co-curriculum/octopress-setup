@@ -155,3 +155,5 @@ Since we generated some files and deployed, now is a good time to add all the ch
 
 ##BONUS
   If you want to further customize your octopress blog check out this [post](http://tsiege.github.io/blog/2014/04/27/tips-on-setting-up-octopress/) I made to do just that.
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/octopress-setup' title='Make a Blog!'>Make a Blog!</a> on Learn.co and start learning to code for free.</p>
