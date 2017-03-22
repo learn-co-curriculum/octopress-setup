@@ -1,5 +1,5 @@
 
-# Make a Blog!
+# Make a Blog! (DEPRECATED)
 ## Specifically with Octopress!
 
 ## Instructions
